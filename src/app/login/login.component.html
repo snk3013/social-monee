@@ -1,0 +1,25 @@
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+
+            <div id="form">
+                <img src="./assets/images/monee1.png" id="login-img" />
+
+                <!-- 로그인 오류 메시지 -->
+                <div *ngIf="getMessage" id="wrong" [ngClass]="styleArray">
+                    {{getMessage}}
+                </div>
+                
+                <!-- 로그인 폼 -->
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="id" [(ngModel)]="id" />
+                </div><br>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="password" [(ngModel)]="pwd" />
+                </div><br>
+                <div class="form-group">
+                    <input type="submit" (click)='tryToLogin()' class="btnSubmit" value="Login" />
+                </div>
+
+            </div>
+        </div>

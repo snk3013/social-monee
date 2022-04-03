@@ -1,0 +1,55 @@
+#content {
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+hr {
+    margin-right: 1%;
+}
+
+.container {
+    margin-bottom: 2%;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+textarea {
+    border: none;
+    resize: none;
+    width: 80%;
+    height: fit-content;
+}
+
+.ng-untouched.ng-pristine.ng-valid {
+    color: white
+}
+
+#profile {
+    margin-top: 4% !important;
+}
+
+#delete {
+    float: right;
+    margin-top: -12%;
+    margin-right: 1%;
+}
+
+.fas.fa-comment-alt {
+    float: right;
+    margin-right: 2%;
+    margin-bottom: 1%;
+    display: flex;
+
+}
+
+#comment {
+    cursor: pointer;
+}
+
+#message {
+    width: 50%;
+    margin-right: 1%;
+    padding-top: 0.8%;
+}

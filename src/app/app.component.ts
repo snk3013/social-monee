@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'social-monee';
+  loginBool = true;
+  boardBool = false;
+
+  getEventThanks(event){
+    console.log(event)
+    if(event == true){
+      this.loginBool = false;
+      this.boardBool = true;
+    }
+  }
 }

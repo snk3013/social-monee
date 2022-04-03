@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="low">
+
+    <!-- 글 작성 란  시작-->
+    <section class="card">
+      <img src="./assets/images/monee3.png" id="head-image">
+
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts"
+              aria-selected="true">
+              생각을 공유해 보세요!</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+            <div class="form-group">
+              <textarea [(ngModel)]="boardForm.content" placeholder="무슨 생각 하세요?" autofocus></textarea>
+            </div>
+
+          </div>
+        </div>
+        <div class="text-right">
+          <button type="button" class="btn btn-primary" (click)="addBoard()">공유하기</button>
+        </div>
+      </div>
+    </section>
+    <br>
+
+    <!-- 글 작성 란  끝-->
+
+    <!-- 작성된 글 목록  시작-->
+    <div class="content" *ngFor="let item of boardlist.slice().reverse(); let inx = index">
+      <section class="card mt-4">
+        <div class="border p-2">
+          <div class="row m-0">
+
+            <div class="">
+              <a class="text-decoration-none" href="#">
+                <img class="" src="./assets/images/monee1.png" id="profile-img" width="100" height="100" alt="...">
+              </a>
+            </div>
+            <div class="flex-grow-1 pl-2" id="profile">
+              <h2 class="text-capitalize h5 mb-0">monee_guest</h2>
+              <p class="small text-secondary m-0 mt-1">1 day ago</p>
+            </div>
+          </div>
+
+          <!-- 작성된 글 내용 -->
+          <div id="content">
+            <p class="my-2">{{item.content}}</p>
+            <button type="button" id="delete" class="btn btn-primary" (click)="removeBoard(item.id)">삭제</button>
+
+            <!-- 댓글 메뉴 -->
+            <hr>
+            <div>
+              <div class="fas fa-comment-alt">
+
+                <div id="comment" (click)="toggle(item.id)">
+                  <img src="https://img.icons8.com/ios-filled/50/4a90e2/comments.png" style="width:25px" />
+                  댓글 {{(item.comment).length}} 개 &nbsp;&nbsp;
+                </div>
+
+                <div>
+                  <img src="https://img.icons8.com/ios-filled/50/4a90e2/won.png" style="width:25px" />
+                  좋아요 &nbsp;&nbsp;
+                </div>
+
+                <div>
+                  <img src="https://img.icons8.com/ios-filled/50/4a90e2/purse.png" style="width:25px" />
+                  보관하기 &nbsp;&nbsp;
+                </div>
+              </div>
+
+
+              <!-- 댓글 토글(작성) -->
+              <div *ngIf="(boardlist.slice().reverse())[inx].showComment">
+                <input type="text" id="com" id="message" [(ngModel)]="commentForm.content">
+                <button type="button" class="btn btn-primary" (click)="addComment(item.id)"
+                  style="margin-bottom: 1.2%;">댓글달기</button>
+
+                <div
+                  *ngFor="let comment of (boardlist.slice().reverse())[inx].comment.slice().reverse(); let inx = index">
+
+                  <img src="https://img.icons8.com/ios-filled/50/4a90e2/right3.png"
+                    style="width: 25px;margin-bottom: 1%;" />
+                  {{comment.content}}
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- 작성된 글 목록 끝-->
